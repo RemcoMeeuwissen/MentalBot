@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "request": "~2.69",
+        "cheerio": "~0.20"
+    }
+
+}
