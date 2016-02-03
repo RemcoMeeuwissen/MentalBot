@@ -1,7 +1,8 @@
 {
     "dependencies": {
         "request": "~2.69",
-        "cheerio": "~0.20"
+        "cheerio": "~0.20",
+        "sqlite3": "~3.1"
     }
 
 }
