@@ -7,8 +7,17 @@ const db = new sqlite3.Database('./mentalbot.sqlite');
 const Rawjs = require('raw.js');
 const reddit = new Rawjs(config.useragent);
 const program = require('commander');
+const Winston = require('winston');
 
-const mentalbot = require('./mentalbot.js')(db, reddit, config);
+const logger = new (Winston.Logger)({
+  transports: [
+    new (Winston.transports.File)({
+      filename: 'mentalbot.log',
+    }),
+  ],
+});
+
+const mentalbot = require('./mentalbot.js')(db, reddit, config, logger);
 
 reddit.setupOAuth2(
   config.clientID,
@@ -22,7 +31,8 @@ program
 
 reddit.auth({ username: config.username, password: config.password }, (error) => {
   if (error) {
-    console.log(`Unable to authenticate user: ${ error }`);
+    logger.log('error', 'Unable to authenticate user: %s', error);
+    db.close();
   } else {
     mentalbot.createTable().then(
       () => mentalbot.getRecentPosts()
