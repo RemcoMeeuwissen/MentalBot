@@ -1,6 +1,6 @@
 {
   "name": "Mentalbot",
-  "version": "1.0.0.",
+  "version": "1.0.0",
   "license": "BSD",
   "dependencies": {
     "request": "~2.69",
