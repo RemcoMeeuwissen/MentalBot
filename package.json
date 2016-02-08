@@ -1,14 +1,22 @@
 {
-    "dependencies": {
-        "request": "~2.69",
-        "cheerio": "~0.20",
-        "sqlite3": "~3.1",
-        "raw.js": "~0.4",
-        "commander": "~2.9",
-        "winston": "~2.1"
-    },
-    "devDependencies": {
-        "eslint": "~1.10",
-        "eslint-config-airbnb": "~5.0"
-    }
+  "name": "Mentalbot",
+  "version": "1.0.0.",
+  "license": "BSD",
+  "dependencies": {
+    "request": "~2.69",
+    "cheerio": "~0.20",
+    "sqlite3": "~3.1",
+    "raw.js": "~0.4",
+    "commander": "~2.9",
+    "winston": "~2.1"
+  },
+  "devDependencies": {
+    "eslint": "~1.10",
+    "eslint-config-airbnb": "~5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RemcoMeeuwissen/MentalBot"
+  },
+  "private": true
 }
