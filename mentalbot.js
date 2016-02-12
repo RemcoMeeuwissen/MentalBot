@@ -42,11 +42,6 @@ module.exports = (db, reddit, config, logger) => ({
 
     return new Promise((resolve) => {
       db.get('SELECT * FROM posts WHERE url = ?', [url], (err, row) => {
-        if (err !== null) {
-          logger.log('error', 'Unable to query the database: %s', err);
-          resolve([]);
-        }
-
         if (err === null && row === undefined) {
           db.run('INSERT INTO posts (title, url) VALUES (?, ?)', [title, url], (error) => {
             if (error !== null) {
@@ -56,6 +51,9 @@ module.exports = (db, reddit, config, logger) => ({
               resolve([title, url]);
             }
           });
+        } else {
+          if (err !== null) logger.log('error', 'Unable to query the database: %s', err);
+          resolve([]);
         }
       });
     });

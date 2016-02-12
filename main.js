@@ -39,6 +39,7 @@ reddit.auth({ username: config.username, password: config.password }, (error) =>
     ).then(
       (body) => mentalbot.parseRecentPosts(body)
     ).then((data) => {
+      if (data === undefined) return [];
       const posts = data.map(mentalbot.savePost);
       return Promise.all(posts);
     }).then((data) => {
