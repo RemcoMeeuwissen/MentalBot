@@ -65,19 +65,15 @@ module.exports = (db, reddit, config, logger) => ({
     const url = data[1];
 
     return new Promise((resolve) => {
-      if (! url.startsWith('http://mentalpod.com/archives/')) {
-        reddit.submit({ url, title, r: config.subreddit }, (error) => {
-          if (error !== null) {
-            logger.log('error', 'Unable to post to Reddit: %s', error);
-          } else {
-            logger.log('info', 'Added a episode to Reddit: %s', title);
-          }
+      reddit.submit({ url, title, r: config.subreddit }, (error) => {
+        if (error !== null) {
+          logger.log('error', 'Unable to post to Reddit: %s', error);
+        } else {
+          logger.log('info', 'Added a episode to Reddit: %s', title);
+        }
 
-          resolve();
-        });
-      } else {
         resolve();
-      }
+      });
     });
   },
 });
